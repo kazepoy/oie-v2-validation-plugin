@@ -77,6 +77,29 @@ The directory containing HL7v2 profile sets (`.zip` archives or extracted folder
    * `POST /api/extensions/hl7v2-validation/settings` with `{"profilesDir": "/path/to/profiles"}` (persisted in OIE extension properties and reloaded immediately)
 4. **Default**: `extensions/hl7v2-validation/profiles`
 
+### Profile Set Structure (Directory or `.zip`)
+
+Each profile set placed in the profiles directory can be either a folder (`<set-name>/`) or a `.zip` archive (`<set-name>.zip`) with the following layout:
+
+```text
+<set-name>/                          # or <set-name>.zip
+├── set.yaml                         # optional: version & hash metadata
+├── resolution.yaml                  # optional: MSH-9 disambiguation rules
+├── hapi/
+│   ├── messages/                    # Chapter 2B conformance profiles (.xml)
+│   │   └── <group>/<tx>/<PROFILE>.xml
+│   └── tables/                      # optional code tables for HAPI
+│       ├── HL7Table-2.5.xml
+│       └── HL7Table-local.xml
+└── nist/                            # optional NIST IGAMT validation bundle
+    ├── Profile.xml
+    ├── Constraints.xml
+    └── ValueSets.xml
+```
+
+* **Profile ID**: relative path under `hapi/messages/` without `.xml` (e.g. `PES/ITI-31/ADT_A01`), or `null` for automatic `MSH-9` resolution.
+* **Engines**: HAPI reads `hapi/messages/` and `hapi/tables/`; NIST reads `nist/`. A set may contain HAPI profiles only, NIST profiles only, or both.
+
 ## Build from source
 
 ```sh
