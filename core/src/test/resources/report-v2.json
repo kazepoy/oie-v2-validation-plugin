@@ -1,0 +1,31 @@
+{
+  "schema": "oie.hl7v2.report/2",
+  "valid": false,
+  "acknowledgmentCode": "AE",
+  "profile": "test-set/ADT_A01",
+  "messageType": "ADT^A01^ADT_A01",
+  "hl7Version": "2.5",
+  "messageControlId": "TEST-1",
+  "engine": "HAPI",
+  "set": {
+    "name": "test-set",
+    "version": "1",
+    "hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "counts": {
+    "error": 1,
+    "warning": 0
+  },
+  "issues": [
+    {
+      "severity": "ERROR",
+      "location": "PID-3(1)-5",
+      "message": "Code 'XX' not found in table HL70203, profile ",
+      "engine": "HAPI",
+      "code": "CODE_NOT_IN_TABLE",
+      "element": "PID.3.5",
+      "table": "0203",
+      "value": "XX"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+<pluginMetaData path="hl7v2-validation">
+    <name>HL7v2 Validation</name>
+    <author>kazepoy</author>
+    <pluginVersion>${project.version}</pluginVersion>
+    <mirthVersion>${oie.version}</mirthVersion>
+    <description>HL7v2 validation server plugin supporting HAPI conformance profiles and NIST IGAMT bundles via REST API and channel scripts.</description>
+    <serverClasses>
+        <string>org.openintegrationengine.plugins.hl7v2.oie.Hl7v2ValidationPlugin</string>
+    </serverClasses>
+    <library type="SHARED" path="hl7v2-validation-server.jar" />
+    <apiProvider type="SERVLET_INTERFACE" name="org.openintegrationengine.plugins.hl7v2.oie.Hl7v2ValidationServletInterface" />
+    <apiProvider type="SERVER_CLASS" name="org.openintegrationengine.plugins.hl7v2.oie.Hl7v2ValidationServlet" />
+</pluginMetaData>

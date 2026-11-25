@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://gazelle.ihe.net/xsl/HL7TableStylesheet.xsl"?>
+<Specification SpecName="ITI" OrgName="IHE" HL7Version="6"
+	SpecVersion="0.1" Status="DRAFT" ConformanceType="Tolerant" Role="Sender"
+	HL7OID="" ProcRule="HL7">
+	<Conformance AccAck="NE" AppAck="AL" StaticID=""
+		MsgAckMode="Deferred" QueryStatus="Event" QueryMode="Non Query"
+		DynamicID="" />
+	<Encodings>
+		<Encoding>ER7</Encoding>
+	</Encodings>
+	<hl7tables>
+		<hl7table id="0119" name="Order control codes and their meaning"
+			codeSys="IHE" type="IHE">
+			<tableElement order="1" code="CA"
+				description="Cancel order/service request" displayName="" source="IHE"
+				usage="Optional" creator="" date="11/09/12" instruction="Event request in OML sent by Analyzer Mgr in LAB-28" />
+			<tableElement order="2" code="CR"
+				description="Canceled as requested" displayName="" source="IHE"
+				usage="Optional" creator="" date="11/09/12" instruction="Event acknowledgment in ORL message responding to OML (CA)" />
+			<tableElement order="3" code="DC"
+				description="Discontinue request" displayName="" source="IHE"
+				usage="Optional" creator="" date="11/09/12" instruction="Sent by Analyzer Mgr to indicate a negative query response in LAB-28" />
+			<tableElement order="4" code="NW" description="New order"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="Event request sent by Analyzer Mgr in OML message of LAB-28" />
+			<tableElement order="5" code="OK"
+				description="Notification or request accepted" displayName="" source="IHE"
+				usage="Optional" creator="" date="11/09/12" instruction="Event acknowledgement in ORL message sent by Analyzer in LAB-28" />
+			<tableElement order="6" code="UA"
+				description="Unable to accept order/service" displayName=""
+				source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="Event acknowledgement in ORL message sent by Analyzer in LAB-28" />
+			<tableElement order="7" code="UC" description="Unable to cancel"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="Event acknowledgement in ORL message sent by Analyzer in LAB-28" />
+			<tableElement order="8" code="SC" description="Status change"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="Sent by analyzer in OUL messages of LAB-29" />
+		</hl7table>
+		<hl7table id="0103" name="Processing ID" codeSys="HL7 Defined Codes - HL7nnn" type="HL7">
+            <tableElement order="2" code="P" description="Production" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+        </hl7table>
+		<hl7table id="0038" name="Order Status" codeSys="IHE" type="IHE">
+			<tableElement order="1" code="A"
+				description="Some, but not all, results available" displayName=""
+				source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="" />
+			<tableElement order="2" code="CA" description="Order was canceled"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="" />
+			<tableElement order="3" code="CM" description="Order is completed"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="" />
+			<tableElement order="4" code="IP" description="In progress, unspecified"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="" />
+			<tableElement order="4" code="SC" description="In progress, scheduled"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="" />
+		</hl7table>
+		<hl7table id="0001" name="Administrative Sex" codeSys="IHE"
+			type="IHE">
+			<tableElement order="1" code="F" description="Female"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="" />
+			<tableElement order="2" code="M" description="Male"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="" />
+			<tableElement order="3" code="U" description="Unknown"
+				displayName="" source="IHE" usage="Optional" creator="" date="11/09/12"
+				instruction="" />
+		</hl7table>
+		<hl7table id="0208" name="Query Response Status" codeSys="HL7 Defined Codes - HL7nnn"
+			type="HL7">
+			<tableElement order="2" code="AE"
+				description="An application error occurred when processing the query"
+				displayName="Application error" source="HL7" usage="Optional"
+				creator="" date="03/23/07" instruction="" />
+			<tableElement order="3" code="AR"
+				description="The application has rejected the request" displayName="Application reject"
+				source="HL7" usage="Optional" creator="" date="03/23/07"
+				instruction="" />
+			<tableElement order="1" code="OK"
+				description="The query has been accepted for processing"
+				displayName="Query accepted" source="HL7" usage="Optional" creator=""
+				date="03/23/07" instruction="" />
+		</hl7table>
+		<hl7table id="0471" name="Query name" codeSys="HL7 Defined Codes - HL7nnn"
+			type="User">
+			<tableElement order="1" code="WOS"
+				description="Work Order Step"
+				displayName="" source="IHE_LABTF" usage="Optional" creator=""
+				date="2011/11/10" instruction="use to query for a single specimen when using option LAW_BIDIR" />
+			<tableElement order="2" code="WOS_ALL"
+				description="Work Order Step All"
+				displayName="" source="IHE_LABTF" usage="Optional" creator=""
+				date="2011/11/10" instruction="use to query for all analytical work when using option LAW_QUERY_ALL" />
+			<tableElement order="3" code="WOS_BY_RACK"
+				description="Work Order Step by Rack"
+				displayName="" source="IHE_LABTF" usage="Optional" creator=""
+				date="2015/03/16" instruction="Use to query for a single specimen in a specific position in a rack when using option LAW_QUERY_RACK" />
+			<tableElement order="4" code="WOS_BY_TRAY"
+				description="Work Order Step by Tray"
+				displayName="" source="IHE_LABTF" usage="Optional" creator=""
+				date="2015/03/16" instruction="Use to query for a single specimen in a specific position in a rack when using option LAW_QUERY_TRAY" />
+			<tableElement order="5" code="WOS_BY_ISOLATE"
+				description="Work Order Step by Isolate"
+				displayName="" source="IHE_LABTF" usage="Optional" creator=""
+				date="2015/03/16" instruction="Use to query for a single specimen in a specific position in a rack when using option LAW_QUERY_ISOLATE" />
+		</hl7table>
+		<hl7table id="0485" name="Extended Priority Codes" codeSys="HL7 Defined Codes - HL7nnn"
+			type="User">
+			<tableElement order="2" code="R" description="Routine"
+				displayName="" source="HL7" usage="Optional" creator="" date="03/23/07"
+				instruction="" />
+			<tableElement order="1" code="S" description="Stat"
+				displayName="" source="HL7" usage="Optional" creator="" date="03/23/07"
+				instruction="" />
+		</hl7table>
+		<hl7table id="0369" name="Specimen Role" codeSys="HL7 Defined Codes - HL7nnn"
+			type="User">
+			<tableElement order="1" code="L" description="Pool patient specimens"
+				displayName="" source="HL7" usage="Optional" creator="" date="03/23/07"
+				instruction="" />
+			<tableElement order="3" code="P" description="Patient specimen"
+				displayName="" source="HL7" usage="Optional" creator="" date="03/23/07"
+				instruction="" />
+			<tableElement order="4" code="Q" description="Control specimen"
+				displayName="" source="HL7" usage="Optional" creator="" date="03/23/07"
+				instruction="" />
+			<tableElement order="5" code="U" description="Unknown"
+				displayName="" source="IHE_LABTF" usage="Optional" creator=""
+				date="2011/11/10" instruction="" />
+		</hl7table>
+		<hl7table id="0384" name="Substance type" codeSys="HL7 Defined Codes - HL7nnn" type="HL7">
+            <tableElement order="3" code="LI" description="Measurable Liquid Item" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="2" code="SC" description="Countable Solid Item" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="1" code="SR" description="Single Test Reagent" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+        </hl7table>
+         <hl7table id="0085" name="Observation result status"
+            codeSys="HL7 Defined Codes - HL7nnn" type="HL7">
+            <tableElement order="1" code="C"
+                description="Record coming over is a correction and thus replaces a final result"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="2" code="R" description="Result entered - not verified" displayName=""
+                source="HL7" usage="Optional" creator="" date="12/06/03" instruction=""/>
+            <tableElement order="3" code="F"
+                description="Final results; Can only be changed with a corrected result."
+                displayName="" source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="7" code="P" description="Preliminary results" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="10" code="X"
+                description="Results cannot be obtained for this observation" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+        </hl7table>
+        <hl7table id="0078" name="Interpretation codes" codeSys="HL7 Defined Codes - HL7nnn" type="User">
+            <tableElement order="5" code="&lt;"
+                description="Off scale low" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="6" code="&gt;"
+                description="Off scale high" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="1" code="L" description="Low" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="2" code="H" description="High" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="3" code="LL" description="Critically low" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="3" code="HH" description="Critically high" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="7" code="N" description="Normal"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/23/07" instruction="Non-numeric results"/>
+            <tableElement order="8" code="A" description="Abnormal"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/23/07" instruction="Non-numeric results"/>
+            <tableElement order="5" code="POS"
+                description="Positive" displayName=""
+                source="IHE_LABTF" usage="Optional" creator="" date="2011/11/10" instruction=""/>            
+           <tableElement order="12" code="NEG"
+                description="Negative" displayName=""
+                source="IHE_LABTF" usage="Optional" creator="" date="2011/11/10" instruction=""/>
+           <tableElement order="10" code="IND"
+                description="Indeterminate" displayName=""
+                source="IHE_LABTF" usage="Optional" creator="" date="2011/11/10" instruction=""/>
+          <tableElement order="11" code="QCF"
+                description="Quality Control Failure" displayName=""
+                source="IHE_LABTF" usage="Optional" creator="" date="2011/11/10" instruction=""/>
+          <tableElement order="13" code="S"
+                description="Susceptible" displayName=""
+                source="IHE_LAW" usage="Optional" creator="" date="2013/12/6" instruction="For microbiology susceptibilities only"/>
+          <tableElement order="14" code="I"
+                description="Intermediate" displayName=""
+                source="IHE_LAW" usage="Optional" creator="" date="2013/12/6" instruction="For microbiology susceptibilities only"/>
+          <tableElement order="15" code="R"
+                description="Resistant" displayName=""
+                source="IHE_LAW" usage="Optional" creator="" date="2013/12/6" instruction="For microbiology susceptibilities only"/>
+          <tableElement order="16" code="SDD"
+                description="Susceptible-dose dependent" displayName=""
+                source="IHE_LAW" usage="Optional" creator="" date="2013/12/6" instruction="For microbiology susceptibilities only"/>
+          <tableElement order="17" code="IE"
+                description="Insufficient evidence" displayName=""
+                source="IHE_LAW" usage="Optional" creator="" date="2013/12/6" instruction="For microbiology susceptibilities only"/> 	
+        </hl7table>
+        <hl7table id="0125" name="Value type" codeSys="HL7 Defined Codes - HL7nnn" type="HL7">
+            <tableElement order="1" code="CE" description="Coded Entry" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="2" code="ED" description="Encapsulated Data" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="3" code="NM" description="Numeric" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="4" code="RP" description="Reference Pointer" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="5" code="SN" description="Structured Numeric" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="6" code="ST" description="String Data." displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="7" code="NA" description="Numeric Array" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+              <tableElement order="8" code="TX" description="Text Data" displayName=""
+                source="HL7" usage="Optional" creator="" date="2013/12/06" instruction=""/>
+        </hl7table>
+         <hl7table id="0202" name="Telecommunication equipment type"
+            codeSys="HL7 Defined Codes - HL7nnn" type="HL7">
+            <tableElement order="5" code="BP" description="Beeper" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="4" code="CP" description="Cellular Phone" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="2" code="FX" description="Fax" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="6" code="Internet"
+                description="Internet Address"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="3" code="MD" description="Modem" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="1" code="PH" description="Telephone" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="7" code="SAT" description="Satellite Phone" displayName="" source="HL7"
+                usage="Optional" creator="" date="03/23/07" instruction=""/>
+        </hl7table>
+        <hl7table id="0008" name="Acknowledgment code" codeSys="HL7 Defined Codes - HL7nnn"
+            type="HL7">
+            <tableElement order="1" code="AA"
+                description="Original mode: Application Accept - Enhanced mode: Application acknowledgment: Accept"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="2" code="AE"
+                description="Original mode: Application Error - Enhanced mode: Application acknowledgment: Error"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+            <tableElement order="3" code="AR"
+                description="Original mode: Application Reject - Enhanced mode: Application acknowledgment: Reject"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/23/07" instruction=""/>
+        </hl7table>
+         <hl7table id="0357" name="Message error condition codes" codeSys="HL7 Defined Codes - HL7nnn"
+            type="HL7">
+            <tableElement order="1" code="100"
+                description="Segment sequence error"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="2" code="101"
+                description="Required field missing"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="3" code="102"
+                description="Data type error"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="4" code="103"
+                description="Table value not found"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="5" code="200"
+                description="Unsupported message type"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="6" code="201"
+                description="Unsupported event code"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="7" code="202"
+                description="Unsupported processing id"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="8" code="203"
+                description="Unsupported version id"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="9" code="207"
+                description="Application internal error"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+        </hl7table>
+        <hl7table id="0383" name="Substance status" codeSys="HL7 Defined Codes - HL7nnn"
+            type="HL7">
+            <tableElement order="1" code="NA"
+                description="Not Applicable"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+        </hl7table>
+        <hl7table id="0507" name="Result handling" codeSys="HL7 Defined Codes - HL7nnn"
+            type="HL7">
+            <tableElement order="1" code="RE"
+                description="Result stored in repository"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+        </hl7table>
+        <hl7table id="0389" name="Analyte repeat status" codeSys="HL7 Defined Codes - HL7nnn"
+            type="HL7">
+            <tableElement order="1" code="O"
+                description="Original, first run"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="2" code="R"
+                description="Repeated without dilution"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="3" code="D"
+                description="Repeated with dilution"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="4" code="F"
+                description="Reflex test"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+        </hl7table>
+         <hl7table id="9001" name="LAW Codes for supplemental results" codeSys="IHELAW"
+            type="HL7">
+            <tableElement order="1" code="S_IMAGE"
+                description="Supplemental Image"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="1" code="S_GRAPH"
+                description="Supplemental Graph"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="1" code="S_RAW"
+                description="Raw Supplemental"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+            <tableElement order="1" code="S_OTHER"
+                description="Other Supplemental"
+                displayName="" source="IHE_LAW" usage="Optional" creator="" date="2013/10/25" instruction=""/>
+        </hl7table>
+        <hl7table id="0105" name="Source of comment" codeSys="HL7 Defined Codes - HL7nnn" type="HL7">
+            <tableElement order="1" code="A"
+                description="Analyzer Manager is the same source of comment" displayName=""
+                source="IHE" usage="Optional" creator="" date="03/16/15" instruction=""/>
+            <tableElement order="2" code="Z" description="Analyzer"
+                displayName="" source="IHE" usage="Optional" creator="" date="03/16/15" instruction=""/>
+        </hl7table>
+         <hl7table id="0440" name="Value type" codeSys="HL7 Defined Codes - HL7nnn" type="HL7">
+            <tableElement order="1" code="CE"
+                description="Coded Entry" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+            <tableElement order="2" code="ED" description="Encapsulated Data"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+            <tableElement order="3" code="EI" description="Entity Identifier"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+            <tableElement order="4" code="NM" description="Numeric"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+           <tableElement order="5" code="NA" description="Numerical Array"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+          <tableElement order="6" code="RP" description="Reference Pointer"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+           <tableElement order="7" code="SN" description="Structured Numeric"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+            <tableElement order="8" code="ST" description="String"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+           <tableElement order="9" code="TX" description="Text Data"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+        </hl7table>
+        <hl7table id="0936" name="Observation Type" codeSys="HL7 Defined Codes - HL7nnn" type="HL7">
+            <tableElement order="1" code="AOE"
+                description="Asked at Order Entry Question" displayName=""
+                source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+            <tableElement order="2" code="ASC" description="Asked at Specimen Collection"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+            <tableElement order="3" code="RSLT" description="Result"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+            <tableElement order="4" code="SCI" description="Supporting Clinical Information"
+                displayName="" source="HL7" usage="Optional" creator="" date="03/16/15" instruction=""/>
+        </hl7table>
+	</hl7tables>
+</Specification>	

@@ -1,0 +1,12 @@
+# Arbitrage des MSH-9 que plusieurs profils de ce jeu declarent.
+#
+# Sans cette ligne, le service de validation repond 409 sur un message auquel
+# plusieurs profils repondent : il ne choisit pas au hasard.
+# Le chemin est relatif au jeu, comme un identifiant sans son prefixe.
+
+ambiguous:
+  # Les deux ACK_ALL du jeu sont identiques en contenu : l'un pour le consommateur d'identites
+  # (PDC, ITI-30), l'autre pour le consommateur de venues (PEC, ITI-31). Un ACK^R01^ACK recu ne
+  # dit pas duquel il releve. On retient celui des venues, comme le faisait l'alias ACK_R01 de
+  # application.yaml avant que la resolution ne soit deduite du contenu.
+  ACK^ALL^ACK: PEC/ITI-31/ACK_ALL

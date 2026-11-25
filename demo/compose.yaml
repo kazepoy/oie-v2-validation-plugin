@@ -1,0 +1,90 @@
+name: v2-validation-demo
+
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: 10m
+    max-file: "5"
+
+volumes:
+  pgdata:
+  appdata:
+  logs:
+
+services:
+  # Build-only service: compiles Open Integration Engine 4.7.0 from source.
+  oie-engine:
+    build:
+      context: https://github.com/OpenIntegrationEngine/engine.git#v4.7.0
+      target: jre-run
+      args:
+        GRADLE_BUILD_ARGS: ${OIE_GRADLE_BUILD_ARGS:--PdisableSigning=true}
+    image: v2-validation-demo-engine:4.7.0
+    profiles: [build]
+
+  oie-db:
+    image: postgres:18.3-alpine
+    restart: unless-stopped
+    command: ["postgres", "-c", "idle_in_transaction_session_timeout=15000"]
+    environment:
+      POSTGRES_DB: oie
+      POSTGRES_USER: oie
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-demo-v2-validation-db}
+      TZ: ${TZ:-Europe/Paris}
+    volumes:
+      - pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U oie -d oie"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    logging: *logging
+
+  oie-app:
+    build:
+      context: ..
+      dockerfile: demo/Dockerfile
+      additional_contexts:
+        oie-engine: service:oie-engine
+    image: v2-validation-demo-oie:4.7.0
+    restart: unless-stopped
+    init: true
+    stop_grace_period: 60s
+    environment:
+      DATABASE: postgres
+      DATABASE_URL: jdbc:postgresql://oie-db:5432/oie
+      DATABASE_USERNAME: oie
+      DATABASE_PASSWORD: ${POSTGRES_PASSWORD:-demo-v2-validation-db}
+      _MP_HTTPS_PORT: "8443"
+      SERVER_ID: ${OIE_SERVER_ID:-28c9f4da-6b1e-4d4a-9e87-4123a98bc701}
+      KEYSTORE_STOREPASS: ${OIE_KEYSTORE_STOREPASS:-demo-v2-validation-store}
+      KEYSTORE_KEYPASS: ${OIE_KEYSTORE_KEYPASS:-demo-v2-validation-key}
+      _MP_PASSWORD_MINLENGTH: "0"
+      _MP_SERVER_INITIALADMINPASSWORD: ${OIE_PASSWORD:-admin}
+      OIE_HL7V2_PROFILES_DIR: ${OIE_HL7V2_PROFILES_DIR:-/hl7v2-profiles}
+      TZ: ${TZ:-Europe/Paris}
+    configs:
+      - source: oie-jvm-options
+        target: /opt/engine/conf/custom.vmoptions
+    ports:
+      - "${OIE_BIND_ADDRESS:-127.0.0.1}:${OIE_HTTPS_PORT:-8445}:8443"
+      - "10800-10900:10800-10900"
+    volumes:
+      - appdata:/opt/engine/appdata
+      - logs:/opt/engine/logs
+      - ./profiles-volume:/hl7v2-profiles:ro
+    depends_on:
+      oie-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--no-check-certificate", "-Y", "off", "-T", "8", "-O", "/dev/null", "https://127.0.0.1:8443/oie-webadmin/"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 120s
+    logging: *logging
+
+configs:
+  oie-jvm-options:
+    content: |
+      -Xmx${OIE_JAVA_MAX_HEAP:-2g}

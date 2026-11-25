@@ -1,0 +1,7 @@
+target/
+**/target/
+.DS_Store
+provided-jars/
+.idea/
+*.iml
+/demo/.env
