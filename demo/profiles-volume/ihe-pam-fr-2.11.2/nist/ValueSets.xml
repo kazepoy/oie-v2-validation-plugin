@@ -2199,6 +2199,7 @@
       <ValueElement Value="D" DisplayName="Changement de prise en charge médico-administrative laissant les responsabilités et la localisation du patient inchangées" CodeSystem="HL7IHE-FRANCE-ZBE-9" Usage="P"/>
       <ValueElement Value="SM" DisplayName="Changement de responsabilité soins + médicale" CodeSystem="HL7IHE-FRANCE-ZBE-9" Usage="P"/>
       <ValueElement Value="SH" DisplayName="Changement de responsabilité soins + hébergement" CodeSystem="HL7IHE-FRANCE-ZBE-9" Usage="P"/>
+      <ValueElement Value="HMS" DisplayName="Changement conjoint des trois responsabilites" CodeSystem="IHE-FRANCE-ZBE-9" Usage="P"/>
       <ValueElement Value="MH" DisplayName="Changement de responsabilité hébergement + médicale" CodeSystem="HL7IHE-FRANCE-ZBE-9" Usage="P"/>
       <ValueElement Value="LD" DisplayName="Changement de prise en charge médico-administrative et de lit, laissant les responsabilités inchangées" CodeSystem="HL7IHE-FRANCE-ZBE-9" Usage="P"/>
     </ValueSetDefinition>
