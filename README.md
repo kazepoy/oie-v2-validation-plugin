@@ -5,13 +5,16 @@ Server plugin for **Open Integration Engine (OIE 4.7+)** providing HL7v2 message
 * Exposes REST endpoints under `/api/extensions/hl7v2-validation` with `Accept` content negotiation (`application/hl7-v2+er7` ACK v2, `application/json` report, `text/plain` summary).
 * Exposes `Hl7v2ValidatorFacade` for direct calls from OIE channel JavaScript/Rhino scripts.
 
+## Install
+
+Prebuilt plugin archives (`hl7v2-validation-<version>.zip`) are available on [GitHub Releases](https://github.com/kazepoy/oie-v2-validation-plugin/releases) and can be installed directly on an existing **OIE 4.7** server: download the zip, extract it into your OIE `extensions/` directory (or deploy it via OIE Administrator / `custom-extensions`), and restart OIE.
+
 ## Try it
 
 ### 1. Start the Docker demo (OIE on port `8445`)
 
 ```sh
 cd demo
-docker compose --profile build build oie-engine
 docker compose up -d --build
 ```
 

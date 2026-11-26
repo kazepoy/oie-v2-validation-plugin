@@ -7,10 +7,7 @@ Demo environment running **Open Integration Engine 4.7.0** with the `hl7v2-valid
 ```sh
 cd demo
 
-# 1. Build the base OIE 4.7.0 engine image (once)
-docker compose --profile build build oie-engine
-
-# 2. Build the plugin image and start PostgreSQL + OIE
+# Build the plugin image and start PostgreSQL + OIE
 docker compose up -d --build
 ```
 
