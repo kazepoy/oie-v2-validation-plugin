@@ -109,7 +109,7 @@ Each profile set placed in the profiles directory can be either a folder (`<set-
 mvn package
 ```
 
-Produces the installable OIE extension archive at `plugin/target/hl7v2-validation-0.1.0.zip`.
+Produces the installable OIE extension archive at `plugin/target/hl7v2-validation-0.8.0.zip`.
 
 ## Documentation
 

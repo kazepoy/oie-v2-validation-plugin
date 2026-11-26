@@ -6,7 +6,7 @@
 
     <groupId>org.openintegrationengine.plugins.hl7v2</groupId>
     <artifactId>hl7v2-validation-parent</artifactId>
-    <version>0.1.0</version>
+    <version>0.8.0</version>
     <packaging>pom</packaging>
     <name>OIE HL7v2 Validation Parent</name>
     <description>HL7v2 validation core (HAPI and NIST engines) and Open Integration Engine server plugin.</description>
