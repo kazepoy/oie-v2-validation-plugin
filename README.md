@@ -1,5 +1,7 @@
 # OIE HL7v2 Validation Plugin
 
+> **Status: In development (pre-1.0).**
+
 Server plugin for **Open Integration Engine (OIE 4.7+)** providing HL7v2 message validation against **HAPI** (Chapter 2B conformance profiles) and **NIST** (IGAMT `Profile.xml` / `Constraints.xml` / `ValueSets.xml`) profile sets.
 
 * Exposes REST endpoints under `/api/extensions/hl7v2-validation` with `Accept` content negotiation (`application/hl7-v2+er7` ACK v2, `application/json` report, `text/plain` summary).
